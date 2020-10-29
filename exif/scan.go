@@ -2,17 +2,16 @@ package exif
 
 import (
 	"errors"
-	//	"flag"
 	"log"
 	"os"
 	"path/filepath"
 	"time"
 
 	"github.com/rwcarlsen/goexif/exif"
-	//"github.com/rwcarlsen/goexif/mknote"
 	"github.com/rwcarlsen/goexif/tiff"
 )
 
+// Exif tbd
 type Exif struct {
 	filename string
 	model    string
@@ -27,8 +26,10 @@ func myWalk(name exif.FieldName, tag exif.*tiff.Tag) error {
 }
 */
 
+// Walker tbd
 type Walker struct{}
 
+// Walk tbd
 func (_ Walker) Walk(name exif.FieldName, tag *tiff.Tag) error {
 	data, _ := tag.MarshalJSON()
 	log.Printf("    %v: %v\n", name, string(data))
@@ -74,7 +75,7 @@ func (e Exif) ReadFile(filename string) error {
 
 	width, err := x.Get(exif.ImageWidth)
 	if err != nil {
-		log.Printf("error get exif.ImageWidth", err)
+		log.Println("error get exif.ImageWidth", err)
 		return nil
 	} else {
 		log.Printf("exif.ImageWidth=" + width.String())

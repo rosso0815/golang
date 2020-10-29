@@ -4,8 +4,7 @@ import (
 	"log"
 
 	"github.com/urfave/cli/v2"
-
-	"github.com/rosso0815/golang/myjobscheduler"
+	//"github.com/rosso0815/golang/myjobscheduler"
 )
 
 func main() {
@@ -22,7 +21,8 @@ func main() {
 				Aliases: []string{"c"},
 				Usage:   "convert a directory of images",
 				Action: func(c *cli.Context) error {
-					myjobscheduler.RunConvert(c.Args().First())
+
+					//myjobscheduler.RunConvert(c.Args().First())
 					return nil
 				},
 			},
