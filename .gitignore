@@ -3,3 +3,11 @@ bin
 pkg
 src/.DS_Store
 src/gopkg.in
+src/golang.org
+src/honnef.co
+src/mvdan.cc/
+src/github.com/sergi
+src/github.com/yuin
+src/github.com/BurntSushi
+src/github.com/google
+**/.DS_Store

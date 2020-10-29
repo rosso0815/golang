@@ -1,2 +1,0 @@
-select * from table01;
-select gugus from hans;
