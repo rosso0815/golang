@@ -1,0 +1,21 @@
+---
+#
+hosts:
+    server1:
+        name: 12222
+firewall_network_rules:
+    rule1:
+        src: blablabla-host
+        dst: blabla-hostname
+    rule2:
+        src: r2s2
+        dst: r2d2
+a: iama
+appid: 1234
+b:
+    c: 2
+    d: [3, 4]
+    e: [6, 7]
+    further:
+        - name: hans
+        - name: peter

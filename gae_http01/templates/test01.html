@@ -1,0 +1,13 @@
+File: templates/example.html
+[[define "title"]]A templated page[[end]]
+[[define "body"]]
+<div ng-app>
+<h1>Hello from a templated page created by andreas</h1>
+
+<label>Name:</label>
+<input type="text" ng-model="yourName" placeholder="Enter a name here">
+<hr>
+<h1>Hello {{yourName}}!</h1>
+
+</div>
+[[end]]

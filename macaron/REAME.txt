@@ -1,0 +1,13 @@
+#
+#   README.txt
+#
+
+stop the server
+    <Ctrl>C
+
+start the server
+    bra run
+
+
+
+
