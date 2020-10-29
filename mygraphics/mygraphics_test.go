@@ -83,6 +83,10 @@ func TestReadmetadata(t *testing.T) {
 func TestResizedImage(t *testing.T) {
 
 	log.Println("@@@ TestResizedImage")
+    
+    Info()
+    Info()
+    Info()
 
 	//deleteOldFiles()
 

@@ -23,6 +23,11 @@ func init() {
 	defer imagick.Terminate()
 }
 
+// Info to get actual version
+func Info() {
+	log.Println("mygraphics Info")
+}
+
 // NewProcessImplImages to do the real stuff
 func NewProcessImplImages() (*ImageProcess, error) {
 	log.Println("@@@ NewProcessImplImages")

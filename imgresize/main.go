@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/urfave/cli/v2"
 	//"github.com/rosso0815/golang/myjobscheduler"
@@ -21,7 +22,7 @@ func main() {
 				Aliases: []string{"c"},
 				Usage:   "convert a directory of images",
 				Action: func(c *cli.Context) error {
-
+					log.Println("@@@ start")
 					//myjobscheduler.RunConvert(c.Args().First())
 					return nil
 				},
@@ -29,8 +30,8 @@ func main() {
 		},
 	}
 
-	// err := app.Run(os.Args)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	err := app.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

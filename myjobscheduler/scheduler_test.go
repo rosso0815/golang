@@ -2,6 +2,7 @@ package myjobscheduler
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 	"testing"
 	"time"
@@ -63,4 +64,8 @@ func TestSingleJob(t *testing.T) {
 
 	fmt.Println("@@@ TestSingleJob")
 
+}
+
+func Test_RunConvert(t *testing.T) {
+	log.Println("@@@ Test_RunConvert")
 }
