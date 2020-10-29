@@ -1,0 +1,13 @@
+imagemagick@6 is keg-only, which means it was not symlinked into /usr/local,
+because this is an alternate version of another formula.
+
+If you need to have imagemagick@6 first in your PATH run:
+  echo 'export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find imagemagick@6 you may need to set:
+  export LDFLAGS="-L/usr/local/opt/imagemagick@6/lib"
+  export CPPFLAGS="-I/usr/local/opt/imagemagick@6/include"
+
+For pkg-config to find imagemagick@6 you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig"
+
