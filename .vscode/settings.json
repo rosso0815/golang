@@ -22,8 +22,8 @@
     "go.testFlags": ["-v"],
     "go.buildOnSave": "off",
     "go.vetOnSave": "off",
-    "go.coverOnSave": true,
-    "go.testOnSave": true,
+    "go.coverOnSave": false,
+    "go.testOnSave": false,
     "git.ignoreLimitWarning": true
 
 }

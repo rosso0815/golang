@@ -10,9 +10,9 @@ type Image struct {
 	path    string
 }
 
-// ImageHandler used for ?
+// ImageHandler used for internal handling of a internal array of images
 type ImageHandler interface {
-	ReadFileFromPath(path string) (err error)
-	GetInfo() (img Image)
-	SaveFileResized() (err error)
+	AddFileFromPath(path string) (index int, err error)
+	GetInfo(index int) (img Image, err error)
+	SaveFileResized(index int, targetDir string) (err error)
 }

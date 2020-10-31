@@ -11,7 +11,7 @@ import (
 func Test_GetInfoFromSingleFile(t *testing.T) {
 	log.Println("@@@ Test_GetInfoFromSingleFile")
 
-	//var testImageHandler ImageHandler
+	//	var testImageHandler ImageHandler
 
 	// mImg1, _ := NewProcessMockImages()
 	// testImageHandler = mImg1
@@ -97,6 +97,39 @@ func setup() {
 func teardown() {
 	log.Println("@@@ teardown")
 	os.RemoveAll("tmp")
+}
+
+func Test_SingleImage(t *testing.T) {
+	testCases := []struct {
+		file string
+		want string
+	}{
+		{"test01.jpg", "13:31"},
+		{"test02.jpg", "07:31"},
+	}
+	for _, tc := range testCases {
+		t.Run(fmt.Sprintf("test %s ", tc.file), func(t *testing.T) {
+			log.Println("")
+			log.Println("@@@ tc.file=", tc.file)
+			//			mImg1, _ := NewProcessMockImages()
+
+			//			var testImageHandler ImageHandler
+			//			testImageHandler = mImg1
+			//			testImageHandler.ReadFileFromPath(tc.file)
+
+			//			testImageHandler.ReadFileFromPath("test02.jpg")
+			// loc, err := time.LoadLocation(tc.loc)
+			// if err != nil {
+			// 	t.Fatal("could not load location")
+			// }
+			// gmt, _ := time.Parse("15:04 2006", tc.gmt)
+			// got := gmt.In(loc).Format("15:04")
+			// log.Println("gmt=", gmt, " loc=", loc, "got=", got)
+			// if got != tc.want {
+			// 	t.Errorf("got %s; want %s", got, tc.want)
+			// }
+		})
+	}
 }
 
 func TestTime(t *testing.T) {
