@@ -4,6 +4,7 @@ set -aeEux
 set -o pipefail
 
 
+
 echo "@@@ lets start"
 rm -rf tmp
 uname -a
