@@ -1,4 +1,4 @@
-package factory
+package pattern
 
 // Vertex some stuff here ...
 type Vertex struct {

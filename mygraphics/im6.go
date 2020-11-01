@@ -19,6 +19,10 @@ type ImageProcess struct {
 
 func init() {
 	log.Println("mygraphics_impl -> init")
+
+	s1 := New()
+	s1["imgagemagick"] = "v6"
+
 	imagick.Initialize()
 	defer imagick.Terminate()
 }

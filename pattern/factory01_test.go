@@ -1,4 +1,4 @@
-package factory
+package pattern
 
 import (
 	"fmt"

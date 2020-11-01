@@ -1,4 +1,4 @@
-package singleton
+package mygraphics
 
 import (
 	"sync"

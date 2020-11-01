@@ -1,10 +1,12 @@
-package main
+package pattern
 
 import (
 	"fmt"
+	"testing"
 )
 
-func main() {
+func TestSingleton2(t *testing.T) {
+
 	for i := 0; i < 10; i++ {
 		go getInstance()
 	}
