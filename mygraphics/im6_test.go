@@ -11,7 +11,7 @@ import (
 func Test_GetInfoFromSingleFile(t *testing.T) {
 	log.Println("@@@ Test_GetInfoFromSingleFile")
 
-	//	var testImageHandler ImageHandler
+	// var testImageHandler ImageHandler
 
 	// mImg1, _ := NewProcessMockImages()
 	// testImageHandler = mImg1
@@ -105,13 +105,15 @@ func Test_SingleImage(t *testing.T) {
 		want string
 	}{
 		{"test01.jpg", "13:31"},
-		{"test02.jpg", "07:31"},
+		//{"test02.jpg", "07:31"},
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("test %s ", tc.file), func(t *testing.T) {
 			log.Println("")
 			log.Println("@@@ tc.file=", tc.file)
-			//			mImg1, _ := NewProcessMockImages()
+			myImg, _ := NewFileFromPath(tc.file)
+			myImg.GetInfo()
+			myImg.SaveFileResized("tmp")
 
 			//			var testImageHandler ImageHandler
 			//			testImageHandler = mImg1
