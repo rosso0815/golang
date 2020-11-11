@@ -3,6 +3,7 @@ package mygraphics
 import (
 	"errors"
 	"log"
+	"os"
 	"path"
 	"strings"
 	"time"
@@ -16,7 +17,7 @@ func init() {
 	defer imagick.Terminate()
 }
 
-// ReadFileFromPath does the thing
+// NewFileFromPath does the thing
 func NewFileFromPath(lPath string) (img *Image, err error) {
 
 	log.Println("@@@ ReadFileFromPath path=", lPath)
@@ -42,24 +43,20 @@ func NewFileFromPath(lPath string) (img *Image, err error) {
 }
 
 // GetInfo reads the file and analyze it
-func (ip *Image) GetInfo() {
-	log.Println("@@@ GetInfo", ip)
-
+func (img *Image) GetInfo() {
+	log.Println("@@@ GetInfo", img)
 }
 
 // SaveFileResized reads the file and analyze it
 // TODO handle folder of actual file
 // TODO handle correct extension
-func (img *Image) SaveFileResized(my_path string) (err error) {
+func (img *Image) SaveFileResized(myPath string) (err error) {
 
-	log.Println("@@@ SaveFileResized, heigth:", img.heigth, " width:", img.width)
-
-	//var mw *imagick.MagickWand
+	log.Println("@@@ SaveFileResized, my_path:", myPath, " img.path:", img.path)
 
 	mw := imagick.NewMagickWand()
 
 	mw.ReadImage(img.path)
-	log.Println("width =", mw.GetImageWidth())
 
 	// TODO : possibel as cmd args defined ?
 	var (
@@ -80,35 +77,53 @@ func (img *Image) SaveFileResized(my_path string) (err error) {
 		log.Println("no resize possible")
 		return nil
 	}
-	log.Println("newWidth=", newWidth, "newHeigth", newHeigth)
+	log.Println("newWidth =", newWidth, ", newHeigth =", newHeigth)
 
 	// resize the picture
 	err = mw.ResizeImage(newWidth, newHeigth, imagick.FILTER_LANCZOS, 1)
 	if err != nil {
 		panic(err)
 	}
+	log.Println("resize done")
 
 	// convert_date
+	tmString := "undefined"
 	layout := "2006:01:02 15:04:05"
+
+	if len(img.created) < 1 {
+		img.created = "1970:01:01 00:00:00"
+	}
+
 	tm, err := time.Parse(layout, img.created)
 	if err != nil {
-		return errors.New("mygraphics: canno parse date")
+		log.Println("ERROR", err)
+		return errors.New("mygraphics: cannot parse date")
 	}
+
+	tmString = tm.Format("20060102_150405")
 
 	// calculate the new filename
 	fixedModel := strings.Replace(img.model, "-", "", 10)
+	log.Println("image.model=", img.model, " fixedModel=", fixedModel, len(fixedModel))
+	if len(fixedModel) < 1 {
+		fixedModel = "unknown"
+	}
 
-	log.Println("image.model=", img.model, " fixedModel=", fixedModel)
+	fileVersion := ""
+	fileVersionInc := 0
+	newFilename := tmString + "_" + strings.ToLower(fixedModel) + ".jpg"
+	newpath := path.Join(path.Dir(myPath), path.Base(newFilename))
+	log.Println("newpath=", newpath)
 
-	newFilename := tm.Format("20060102_150405") +
-		"_" +
-		strings.ToLower(img.emake) +
-		"_" +
-		strings.ToLower(fixedModel) +
-		".jpg"
+	_, err = os.Stat(newpath)
+	if err != nil {
+		log.Println("file stat error ", err)
+	}
 
-	newpath := path.Join(path.Dir(img.path), path.Base(newFilename))
 	mw.SetImageCompressionQuality(95)
-	mw.WriteImage(newpath)
+	err = mw.WriteImage(newpath)
+	if err != nil {
+		log.Println("ERROR mw.WriteImage", err)
+	}
 	return nil
 }
