@@ -103,7 +103,7 @@ func Test_SingleImageWithEXIF(t *testing.T) {
 		file string
 		want string
 	}{
-		//{"test01.jpg", "13:31"},
+		{"test01.jpg", "13:31"},
 		{"test02.jpg", "07:31"},
 		{"test03.jpg", "07:31"},
 	}

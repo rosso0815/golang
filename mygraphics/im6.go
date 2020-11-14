@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"path"
+	"strconv"
 	"strings"
 	"time"
 
@@ -109,21 +110,37 @@ func (img *Image) SaveFileResized(myPath string) (err error) {
 		fixedModel = "unknown"
 	}
 
-	fileVersion := ""
-	fileVersionInc := 0
-	newFilename := tmString + "_" + strings.ToLower(fixedModel) + ".jpg"
-	newpath := path.Join(path.Dir(myPath), path.Base(newFilename))
-	log.Println("newpath=", newpath)
+	var fileVersion int
+	var fileSaved bool
+	var filename string
 
-	_, err = os.Stat(newpath)
-	if err != nil {
-		log.Println("file stat error ", err)
-	}
+	for fileSaved == false {
+		if fileVersion < 1 {
+			filename = tmString + "_" + strings.ToLower(fixedModel) + ".jpg"
+		} else {
+			i := strconv.Itoa(fileVersion)
+			filename = tmString + "_" + strings.ToLower(fixedModel) + "_" + i + ".jpg"
+		}
+		newpath := path.Join(path.Dir(myPath), path.Base(filename))
+		log.Println("newpath=", newpath)
 
-	mw.SetImageCompressionQuality(95)
-	err = mw.WriteImage(newpath)
-	if err != nil {
-		log.Println("ERROR mw.WriteImage", err)
+		_, err = os.Stat(newpath)
+		if err != nil {
+			log.Println("file not exists", err)
+			mw.SetImageCompressionQuality(95)
+			err = mw.WriteImage(newpath)
+			if err != nil {
+				log.Fatalln("ERROR mw.WriteImage", err)
+			}
+			fileSaved = true
+
+		} else {
+			log.Println("file exists")
+			fileVersion++
+
+			time.Sleep(2 * time.Second)
+		}
+
 	}
 	return nil
 }
