@@ -1,7 +1,7 @@
 {
     "workbench.startupEditor": "newUntitledFile",
 
-    "editor.fontSize": 16,
+    "editor.fontSize": 18,
     "editor.fontFamily": "'Source Code Pro Medium'",
     "editor.fontLigatures": null,
     "editor.minimap.enabled": false,
@@ -9,21 +9,22 @@
     "explorer.confirmDelete": false,
 
     "terminal.integrated.automationShell.linux": "",
-    "terminal.integrated.fontFamily": "Monaco",
-    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontFamily": "'Source Code Pro Medium'",
+    "terminal.integrated.fontSize": 18,
     "terminal.integrated.lineHeight": 1,
 
-    "go.formatTool": "goimports",
+    "go.formatTool": "gofmt",
     "go.generateTestsFlags": [
         "-v"
     ],
-    "go.lintOnSave": "off",
+    "go.lintOnSave": "file",
     "go.logging.level": "verbose",
     "go.testFlags": ["-v"],
     "go.buildOnSave": "off",
     "go.vetOnSave": "off",
     "go.coverOnSave": false,
     "go.testOnSave": false,
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "go.lintTool": "golangci-lint"
 
 }

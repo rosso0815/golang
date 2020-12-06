@@ -18,6 +18,10 @@ func init() {
 	defer imagick.Terminate()
 }
 
+func Info() {
+	log.Println("mygraphics Info")
+}
+
 // NewFileFromPath does the thing
 func NewFileFromPath(lPath string) (img *Image, err error) {
 

@@ -31,5 +31,6 @@ kubectl get deployment apf-minikube
 
 kubectl expose deployment apf-minikube --type=LoadBalancer --name=apf-minikube-
 
+kubectl get services apf-minikube-service
 
- kubectl get services apf-minikube-service
+
