@@ -1,10 +1,8 @@
-package main
+package sql
 
 import (
 	"database/sql"
 	"fmt"
-	//"time"
-
 	"testing"
 
 	_ "github.com/lib/pq"
@@ -12,18 +10,6 @@ import (
 
 func init() {
 	fmt.Println("@@@ init")
-	// db, err := sql.Open("mysql", "reader:reader@/employees?charset=utf8")
-	// checkErr(err)
-	// rows, err := db.Query("SELECT emp_no,first_name,last_name FROM employees")
-	// checkErr(err)
-	// for rows.Next() {
-	// 	var empNo int
-	// 	var firstName string
-	// 	var lastName string
-	// 	err = rows.Scan(&empNo, &firstName, &lastName)
-	// 	checkErr(err)
-	// 	fmt.Printf("emp_no=%d,first_name=%s,last_name=%s\n", empNo, firstName, lastName)
-	// }
 }
 
 func TestPgAbs(t *testing.T) {
