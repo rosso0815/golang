@@ -1,0 +1,10 @@
+{% macro user_content(content) %}
+{{content|safe}}
+{% endmacro %}
+
+{% for user in users %}
+##  {{user.name}}.txt output
+{% set filename = user.name|stringformat:"%s.txt" %}
+{{ user_content( user.content ) | write_file:filename }}
+##
+{% endfor %}

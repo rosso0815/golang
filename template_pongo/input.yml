@@ -1,0 +1,10 @@
+users:
+- user:
+  name: Mike
+  content: This is Mike's content.
+- user:
+  name: Sally
+  content: This is Sally's content.
+- user:
+  name: Greg
+  content: This is Greg's content.
