@@ -22,6 +22,7 @@ var configContent = `
 `
 
 func main() {
+	fmt.Println("@@@ go generate")
 	config := &Config{}
 	if err := json.Unmarshal([]byte(configContent), config); err != nil {
 		panic(err)
@@ -39,6 +40,7 @@ func main() {
 		fmt.Fprintf(buffer, "\n")
 	}
 	fmt.Fprintf(buffer, "\n}")
+
 	if err := ioutil.WriteFile("foobar.go", buffer.Bytes(), 0644); err != nil {
 		panic(err)
 	}
